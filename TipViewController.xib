@@ -6,6 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TipViewController">
             <connections>
+                <outlet property="billAmountField" destination="O0M-nI-b5z" id="001-jM-ghH"/>
+                <outlet property="tipAmountLabel" destination="hWS-H7-xjg" id="jCd-5W-hkU"/>
+                <outlet property="tipPercentControl" destination="eKD-0f-95I" id="UUU-Rq-Ywj"/>
+                <outlet property="totalLabel" destination="DGG-va-wpK" id="Dty-Db-3cU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,6 +30,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits" keyboardAppearance="light"/>
+                    <connections>
+                        <action selector="billAmountChanged:" destination="-1" eventType="editingChanged" id="0sw-5g-4rT"/>
+                    </connections>
                 </textField>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="eKD-0f-95I">
                     <rect key="frame" x="20" y="156" width="280" height="29"/>
@@ -35,6 +42,9 @@
                         <segment title="15%"/>
                         <segment title="20%"/>
                     </segments>
+                    <connections>
+                        <action selector="tipRateChanged:" destination="-1" eventType="valueChanged" id="nQW-7T-Y6U"/>
+                    </connections>
                 </segmentedControl>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tip amount" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALl-7n-G0U">
                     <rect key="frame" x="20" y="207" width="87" height="21"/>

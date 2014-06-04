@@ -9,10 +9,33 @@
 #import "TipViewController.h"
 
 @interface TipViewController ()
-
+@property (weak, nonatomic) IBOutlet UITextField *billAmountField;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *tipPercentControl;
+@property (weak, nonatomic) IBOutlet UILabel *tipAmountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @end
 
 @implementation TipViewController
+- (IBAction)billAmountChanged:(UITextField *)sender {
+    [self UpdateTip];
+}
+- (IBAction)tipRateChanged:(UISegmentedControl *)sender {
+    [self UpdateTip];
+}
+
+- (void)UpdateTip
+{
+    float amount, percent, tip, total;
+    
+    amount  = self.billAmountField.text.floatValue;
+    percent = .10 + .05 * [self.tipPercentControl selectedSegmentIndex];
+    tip     = amount * percent;
+    total   = amount + tip;
+    
+    self.tipAmountLabel.text = [NSString stringWithFormat:@"$%.2f",tip];
+    self.totalLabel.text = [NSString stringWithFormat:@"$%.2f",total];
+
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
