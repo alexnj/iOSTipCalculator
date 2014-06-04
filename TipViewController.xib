@@ -72,8 +72,23 @@
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="S0u-yt-vh5" appends="YES" id="mT5-fw-hDK"/>
+            </connections>
         </view>
+        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Qq8-g3-Ntu">
+            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+            <nil key="highlightedColor"/>
+        </label>
+        <tapGestureRecognizer id="S0u-yt-vh5">
+            <connections>
+                <action selector="tappedBlankArea:" destination="-1" id="VRn-JJ-0Bz"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

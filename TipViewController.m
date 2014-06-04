@@ -16,11 +16,17 @@
 @end
 
 @implementation TipViewController
+
 - (IBAction)billAmountChanged:(UITextField *)sender {
     [self UpdateTip];
 }
+
 - (IBAction)tipRateChanged:(UISegmentedControl *)sender {
     [self UpdateTip];
+}
+
+- (IBAction)tappedBlankArea:(UITapGestureRecognizer *)sender {
+    [[self view] endEditing:YES];
 }
 
 - (void)UpdateTip
