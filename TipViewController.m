@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *tipPercentControl;
 @property (weak, nonatomic) IBOutlet UILabel *tipAmountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property NSInteger cachedTipPreference;
+@property NSUserDefaults *preferences;
 @end
 
 @implementation TipViewController
@@ -57,18 +59,30 @@
     return self;
 }
 
+- (void)loadDefaults
+{
+    int storedSetting = [self.preferences integerForKey:@"default_tip"];
+    if (storedSetting != self.cachedTipPreference) {
+        self.cachedTipPreference = storedSetting;
+        [self.tipPercentControl setSelectedSegmentIndex:self.cachedTipPreference];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
-    int defaultTip = [preferences integerForKey:@"default_tip"];
-    
-    [self.tipPercentControl setSelectedSegmentIndex:defaultTip];
+    self.preferences = [NSUserDefaults standardUserDefaults];
+    [self.billAmountField setKeyboardType:UIKeyboardTypeDecimalPad];
+    [self.billAmountField becomeFirstResponder];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
 
     self.title = @"Tip Calculator";
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self loadDefaults];
 }
 
 - (void)didReceiveMemoryWarning
