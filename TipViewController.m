@@ -7,6 +7,7 @@
 //
 
 #import "TipViewController.h"
+#import "SettingsViewController.h"
 
 @interface TipViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *billAmountField;
@@ -40,7 +41,11 @@
     
     self.tipAmountLabel.text = [NSString stringWithFormat:@"$%.2f",tip];
     self.totalLabel.text = [NSString stringWithFormat:@"$%.2f",total];
+}
 
+- (void)onSettingsButton
+{
+    [self.navigationController pushViewController:[[SettingsViewController alloc] init] animated:YES];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,6 +60,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
 
     self.title = @"Tip Calculator";
 }
