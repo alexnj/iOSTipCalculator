@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 @property NSInteger cachedTipPreference;
 @property NSUserDefaults *preferences;
+@property NSNumberFormatter *numberFormatter;
 @end
 
 @implementation TipViewController
@@ -41,8 +42,8 @@
     tip     = amount * percent;
     total   = amount + tip;
     
-    self.tipAmountLabel.text = [NSString stringWithFormat:@"$%.2f",tip];
-    self.totalLabel.text = [NSString stringWithFormat:@"$%.2f",total];
+    self.tipAmountLabel.text = [self.numberFormatter stringFromNumber:[NSNumber numberWithFloat: tip]];
+    self.totalLabel.text = [self.numberFormatter stringFromNumber:[NSNumber numberWithFloat: total]];
 }
 
 - (void)onSettingsButton
@@ -72,6 +73,12 @@
 {
     [super viewDidLoad];
     self.preferences = [NSUserDefaults standardUserDefaults];
+
+    // Get right currency styles for user locale.
+    self.numberFormatter = [[NSNumberFormatter alloc] init];
+    [self.numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [self.numberFormatter setLocale:[NSLocale currentLocale]];
+    
     [self.billAmountField setKeyboardType:UIKeyboardTypeDecimalPad];
     [self.billAmountField becomeFirstResponder];
     
