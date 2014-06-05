@@ -66,6 +66,7 @@
     if (storedSetting != self.cachedTipPreference) {
         self.cachedTipPreference = storedSetting;
         [self.tipPercentControl setSelectedSegmentIndex:self.cachedTipPreference];
+        [self UpdateTip];
     }
 }
 
