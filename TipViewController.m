@@ -60,6 +60,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSUserDefaults *preferences = [NSUserDefaults standardUserDefaults];
+    int defaultTip = [preferences integerForKey:@"default_tip"];
+    
+    [self.tipPercentControl setSelectedSegmentIndex:defaultTip];
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingsButton)];
 
     self.title = @"Tip Calculator";
