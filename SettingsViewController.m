@@ -29,10 +29,7 @@
 }
 
 - (void)loadData {
-    [self.defaultTipControl setSelectedSegmentIndex:[self.defaults integerForKey:@"default_tip"]];
-    
-    NSLog(@"Default tip: %i",[self.defaults integerForKey:@"default_tip"]);
-    
+    [self.defaultTipControl setSelectedSegmentIndex:[self.defaults integerForKey:@"default_tip"]];    
 }
 
 - (void)saveData {
